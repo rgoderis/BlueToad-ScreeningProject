@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-// import ImageSearch from './components/ImageSearch';
 import ImageDisplay from "./components/ImageDisplay";
-// import API from './utils/API';
 
 // Flickr api 
 // key: 558d44c427e351de9040cd0eb74be930
@@ -12,7 +10,7 @@ import ImageDisplay from "./components/ImageDisplay";
 function App() {
 
   const [search, setSearch] = useState('')
-  const [images, getImages] = useState('')
+  const [images, getImages] = useState([])
 
   const returnSearch = () =>{
       findImages(search)
@@ -31,7 +29,17 @@ function App() {
       <h1>Blue Toad Sample Project</h1>
       <input className="image-input" onChange={e=>setSearch(e.target.value)}/>
       <button className="image-search" onClick={()=>returnSearch()}>Search</button>
-      <ImageDisplay/>
+      <div>
+        {images.map(image=>(
+          <ImageDisplay
+            farmId = {image.farm}
+            serverId = {image.server}
+            id = {image.id}
+            secretId = {image.secret}
+          />
+        ))}
+      </div>
+      
     </div>
   );
 }

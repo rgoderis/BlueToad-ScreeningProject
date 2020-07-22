@@ -1,9 +1,9 @@
 import React from 'react';
 
-function ImageDisplay(){
+function ImageDisplay(props){
     return (
         <div>
-            <p>Image Display</p>
+            <img src= {`https://farm${props.farmId}.staticflickr.com/${props.serverId}/${props.id}_${props.secretId}.jpg`}/>
         </div>
     )
 
