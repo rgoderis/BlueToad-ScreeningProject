@@ -18,9 +18,18 @@ function App() {
   }
 
   const findImages = (searchPeram)=>{
-    fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=558d44c427e351de9040cd0eb74be930&per_page=25&safe_search=1&text=${searchPeram}&format=json&nojsoncallback=1`) 
+    fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=558d44c427e351de9040cd0eb74be930&tags=${searchPeram}&safe_search=1&per_page=100&format=json&nojsoncallback=1`)
     .then(response => response.json())
-    .then(jsondata => getImages(jsondata.photos.photo))
+    .then(jsondata => {
+      let cleanImages = []
+      jsondata.photos.photo.forEach(photo=>{
+        if(parseInt(photo.server) !==0 && parseInt(photo.farm) !==0 && cleanImages.length < 25){
+          cleanImages.push(photo)
+          console.log(photo)
+        }
+      })
+      getImages(cleanImages)
+    })
     .catch(err=>console.log(err))
   }
 
@@ -29,7 +38,7 @@ function App() {
       <h1>Blue Toad Sample Project</h1>
       <input className="image-input" onChange={e=>setSearch(e.target.value)}/>
       <button className="image-search" onClick={()=>returnSearch()}>Search</button>
-      <div>
+      <div id='img-container'>
         {images.map(image=>(
           <ImageDisplay
             farmId = {image.farm}

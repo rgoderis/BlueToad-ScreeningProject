@@ -11,3 +11,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#img-container {
+    overflow:scroll; 
+    height:500px;
+    width: 500px;
+    margin: 10px auto;
+}
+
+.image-search {
+  background-color: #000080;
+  color: white;
+  height: 25px;
+
+  border-radius: 5px;
+  border: none;
+}
+
+.image-search:hover {
+  background-color: #0000b3;
+  cursor: pointer;
+}
+
+.image-search:focus {
+  outline: 0;
+}
+
+.image-input {
+ width: 25%;
+ margin: 0 5px;
+ height: 25px;
+}
+
+.image-input:focus {
+ outline: 0;
+}
+
