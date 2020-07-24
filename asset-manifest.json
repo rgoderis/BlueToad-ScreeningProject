@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/BlueToad-ScreeningProject/static/css/main.cdc9ee55.chunk.css",
+    "main.js": "/BlueToad-ScreeningProject/static/js/main.c7cf5791.chunk.js",
+    "main.js.map": "/BlueToad-ScreeningProject/static/js/main.c7cf5791.chunk.js.map",
+    "runtime-main.js": "/BlueToad-ScreeningProject/static/js/runtime-main.ca21337a.js",
+    "runtime-main.js.map": "/BlueToad-ScreeningProject/static/js/runtime-main.ca21337a.js.map",
+    "static/js/2.08a89009.chunk.js": "/BlueToad-ScreeningProject/static/js/2.08a89009.chunk.js",
+    "static/js/2.08a89009.chunk.js.map": "/BlueToad-ScreeningProject/static/js/2.08a89009.chunk.js.map",
+    "index.html": "/BlueToad-ScreeningProject/index.html",
+    "precache-manifest.ec244714d2a077f0300957158a5b156f.js": "/BlueToad-ScreeningProject/precache-manifest.ec244714d2a077f0300957158a5b156f.js",
+    "service-worker.js": "/BlueToad-ScreeningProject/service-worker.js",
+    "static/css/main.cdc9ee55.chunk.css.map": "/BlueToad-ScreeningProject/static/css/main.cdc9ee55.chunk.css.map",
+    "static/js/2.08a89009.chunk.js.LICENSE.txt": "/BlueToad-ScreeningProject/static/js/2.08a89009.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ca21337a.js",
+    "static/js/2.08a89009.chunk.js",
+    "static/css/main.cdc9ee55.chunk.css",
+    "static/js/main.c7cf5791.chunk.js"
+  ]
+}
