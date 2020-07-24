@@ -2,9 +2,12 @@ import React, {useState} from 'react';
 import './App.css';
 import ImageDisplay from "./components/ImageDisplay";
 
-// Flickr api 
-// key: 558d44c427e351de9040cd0eb74be930
-// secret: 31b0e5f1d3c94cfb
+// ES Modules syntax
+import Unsplash, { toJson } from "unsplash-js";
+// require syntax
+const unsplash = new Unsplash({
+  accessKey: 'rlZeOgPeOeRkfHFGxIsAY89BvxcJNLiq9mjM86mb4vQ'
+});
 
 
 function App() {
@@ -17,21 +20,18 @@ function App() {
       console.log(images)
   }
 
-  const findImages = (searchPeram)=>{
-    fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=558d44c427e351de9040cd0eb74be930&tags=${searchPeram}&safe_search=1&per_page=100&format=json&nojsoncallback=1`)
-    .then(response => response.json())
-    .then(jsondata => {
-      let cleanImages = []
-      jsondata.photos.photo.forEach(photo=>{
-        if(parseInt(photo.server) !==0 && parseInt(photo.farm) !==0 && cleanImages.length < 25){
-          cleanImages.push(photo)
-          console.log(photo)
-        }
-      })
-      getImages(cleanImages)
+const findImages = (searchPeram)=>{
+  unsplash.search.photos(searchPeram, 1, 25, { orientation: "portrait" }, {content_filter: "high"})
+  .then(toJson)
+  .then(json => {
+    let images = []
+    json.results.forEach(res=>{
+      images.push(res)
     })
-    .catch(err=>console.log(err))
-  }
+    getImages(images)
+  });
+}
+
 
   return (
     <div className="App">
@@ -41,10 +41,8 @@ function App() {
       <div id='img-container'>
         {images.map(image=>(
           <ImageDisplay
-            farmId = {image.farm}
-            serverId = {image.server}
-            id = {image.id}
-            secretId = {image.secret}
+            desc = {image.alt_description}
+            url = {image.urls.regular}
           />
         ))}
       </div>
